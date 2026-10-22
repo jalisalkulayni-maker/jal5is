@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#030705">
     <meta name="color-scheme" content="dark">
-    <meta name="description" content="خزانة علوم العترة من جليس الكليني: مكتبة رقمية للكتب والمتون والروايات ومصادر حديث أهل البيت عليهم السلام.">
+    <meta name="description" content="خزانة علوم العترة من جليس الكليني: منصة بحثية ومكتبة رقمية متطورة للكتب والمتون والروايات ومصادر حديث أهل البيت عليهم السلام.">
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="canonical" href="https://jalisalkulayni-maker.github.io/jal5is/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="خزانة علوم العترة | جليس الكليني">
-    <meta property="og:description" content="مكتبة رقمية للكتب والمتون والروايات ومصادر حديث أهل البيت عليهم السلام.">
+    <meta property="og:title" content="خزانة علوم العترة | جليس الكليني – المنصة البحثية">
+    <meta property="og:description" content="مكتبة رقمية ومنصة تحقيق وبحث متقدم في الكتب والمتون والروايات ومصادر حديث أهل البيت عليهم السلام.">
     <meta property="og:url" content="https://jalisalkulayni-maker.github.io/jal5is/">
     <meta property="og:site_name" content="جليس الكليني">
     <meta property="og:locale" content="ar_IQ">
     <meta name="twitter:card" content="summary_large_image">
-    <title>خزانة علوم العترة | جليس الكليني – مكتبة الروايات والكتب</title>
+    <title>خزانة علوم العترة | جليس الكليني – المنصة البحثية للمتون والروايات</title>
     <script type="application/ld+json">
     {
       "@context":"https://schema.org",
@@ -32,44 +32,88 @@
     }
     </script>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body id="appBody" class="theme-royal">
 
+    <!-- الخلفيات الضوئية الملكية -->
     <div class="bg-orb orb-1"></div>
     <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
     <div class="noise-overlay"></div>
 
+    <!-- الإشعار الملكي العائم -->
     <div id="royalToast" class="royal-toast">
         <i class="fas fa-circle-check"></i>
         <span id="royalToastText">تمت العملية بنجاح</span>
     </div>
 
-    <!-- 1. الرواق الرئيسي -->
+    <!-- =========================================================================
+         1. الرواق الرئيسي (Home View)
+         ========================================================================= -->
     <main id="homeView" class="stage-view active">
         <header class="royal-header">
-            <div>
-                <div class="tag-gold">✦ جليس الكليني</div>
-                <h1 class="main-title">خزانة علوم العترة</h1>
+            <div class="header-brand-wrap">
+                <div class="tag-gold">✦ جليس الكليني · الإصدار البحثي</div>
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                    <h1 class="main-title">خزانة علوم العترة</h1>
+                    <div class="v10-library-status" title="إحصائيات الخزانة">
+                        <i class="fas fa-database"></i>
+                        <span><b data-library-book-count>—</b> متن</span>
+                    </div>
+                </div>
             </div>
             <div class="header-actions-v2">
-                <button class="tactile-btn icon-btn" onclick="openPersonalLibrary()" title="مكتبتي" aria-label="مكتبتي">
-                    <i class="fas fa-star text-gold"></i>
+                <button class="tactile-btn icon-btn" onclick="openLibraryCommandCenter()" title="مركز أدوات الباحث (Ctrl+K)" aria-label="مركز الأدوات">
+                    <i class="fas fa-compass-drafting text-gold"></i>
                 </button>
-                <button class="tactile-btn icon-btn" onclick="openSearch()" title="بحث" aria-label="بحث">
-                    <i class="fas fa-search text-gold"></i>
+                <button class="tactile-btn icon-btn" onclick="openPersonalLibrary()" title="مكتبتي وحقيبة البحث" aria-label="مكتبتي">
+                    <i class="fas fa-briefcase text-gold"></i>
+                </button>
+                <button class="tactile-btn icon-btn" onclick="openSearch()" title="البحث العلمي المتقدم (/)" aria-label="بحث">
+                    <i class="fas fa-magnifying-glass text-gold"></i>
                 </button>
             </div>
         </header>
 
-        <!-- كلامكم نور -->
-        <section class="slider-container" style="padding: 0 20px 10px;">
-            <div class="glass-box daily-hadith-card" style="padding: 16px; border: 1px solid rgba(212,175,55,0.35); position: relative; overflow: hidden;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                    <span class="tag-gold-bg" style="margin-bottom: 0;"><i class="fas fa-sun"></i> كلامكم نور</span>
+        <!-- شريط الوصول البحثي السريع -->
+        <section class="quick-research-strip">
+            <div class="quick-search-trigger glass-box tactile-btn" onclick="openSearch()">
+                <i class="fas fa-magnifying-glass text-gold"></i>
+                <span>ابحث في المتون، الأبواب المتناظرة، أو خصص مجموعة كتب للبحث...</span>
+                <kbd>/</kbd>
+            </div>
+            <div class="quick-stats-pills">
+                <button class="quick-stat-chip tactile-btn" onclick="switchTab('catalog')">
+                    <i class="fas fa-layer-group text-gold"></i>
+                    <span>الأقسام الموضوعية</span>
+                </button>
+                <button class="quick-stat-chip tactile-btn" onclick="openSearchWithMode('topics')">
+                    <i class="fas fa-sitemap text-gold"></i>
+                    <span>مستكشف الأبواب</span>
+                </button>
+                <button class="quick-stat-chip tactile-btn" onclick="openCustomBooksScopeModal(true)">
+                    <i class="fas fa-list-check text-gold"></i>
+                    <span>بحث في كتب مختارة</span>
+                </button>
+                <button class="quick-stat-chip tactile-btn" onclick="openPersonalLibrary('quotes')">
+                    <i class="fas fa-quote-right text-gold"></i>
+                    <span>شواهدي المحفوظة</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- إشراقة كلامكم نور -->
+        <section class="slider-container" style="padding: 0 20px 14px;">
+            <div class="glass-box daily-hadith-card">
+                <div class="daily-hadith-top">
+                    <span class="tag-gold-bg"><i class="fas fa-sun"></i> كلامكم نور</span>
                     <div style="display: flex; gap: 6px;">
+                        <button class="tactile-btn mini-action-btn" onclick="searchCurrentHadithInLibrary()" title="بحث عن هذا المتن في المكتبة">
+                            <i class="fas fa-magnifying-glass"></i>
+                        </button>
                         <button class="tactile-btn mini-action-btn" onclick="loadRandomDailyHadith()" title="تجديد الإشراقة">
                             <i class="fas fa-rotate"></i>
                         </button>
@@ -79,66 +123,115 @@
                     </div>
                 </div>
                 
-                <p id="dailyHadithText" style="font-family: 'Amiri', serif; font-size: 16px; line-height: 1.8; color: #FDF0B2; margin-bottom: 8px; text-align: justify;">
+                <p id="dailyHadithText" class="daily-hadith-body">
                     جاري استحضار الإشراقة المباركة...
                 </p>
                 
-                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed rgba(212,175,55,0.25); padding-top: 6px;">
+                <div class="daily-hadith-footer">
                     <span id="dailyHadithSource" style="font-size: 11px; color: var(--text-muted); font-weight: bold;">
                         <i class="fas fa-feather-pointed text-gold"></i> المصدر: جاري التوثيق...
                     </span>
-                    <a href="https://t.me/Jali4s" target="_blank" style="font-size: 10px; color: var(--gold-main); text-decoration: none; font-weight: bold;">
+                    <a href="https://t.me/Jali4s" target="_blank" rel="noopener" class="telegram-pill-link">
                         قناة جليس الكليني <i class="fab fa-telegram-plane"></i>
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- شبكة رفوف الكتب -->
+        <!-- قسم متابعة القراءة الأخيرة -->
+        <section id="continueReadingSection" class="v2-continue-section" style="display: none;">
+            <div class="v2-section-head">
+                <div>
+                    <span class="tag-gold">✦ استئناف المطالعة</span>
+                    <h3>متابعة القراءة الأخيرة</h3>
+                </div>
+                <button class="v2-link-btn tactile-btn" onclick="openPersonalLibrary('recent')">سجل القراءات <i class="fas fa-arrow-left"></i></button>
+            </div>
+            <div id="continueReadingCard" class="continue-reading-card"></div>
+        </section>
+
+        <!-- شبكة رفوف الكتب وأدوات الفرز السريع -->
         <section class="books-section">
-            <h3 class="text-white" style="margin: 0 20px 10px; font-size: 15px;">خزانة المتون والمؤلفات</h3>
+            <div class="section-toolbar-row">
+                <div>
+                    <span class="tag-gold">✦ الخزانة الشاملة</span>
+                    <h3 class="text-white" style="font-size: 16px;">خزانة المتون والمؤلفات</h3>
+                </div>
+                <div class="shelf-controls">
+                    <div class="shelf-filter-box">
+                        <i class="fas fa-filter text-gold"></i>
+                        <input type="text" id="homeQuickFilterInput" placeholder="تصفية سريعة للكتب..." oninput="filterHomeBooksGrid(this.value)">
+                    </div>
+                    <button id="shelfViewToggleBtn" class="tactile-btn mini-action-btn" onclick="toggleShelfLayoutMode()" title="تبديل نمط العرض (شبكة / قائمة)">
+                        <i class="fas fa-table-cells"></i>
+                    </button>
+                </div>
+            </div>
             
+            <!-- سلايدر الكتب المميزة -->
             <div class="hero-slider-wrap" style="margin: 0 20px 16px; position: relative;">
                 <div class="hero-slider-track" id="heroSliderTrack"></div>
                 <div class="hero-indicators" id="heroIndicators"></div>
             </div>
 
+            <!-- شريط الفلترة السريعة حسب التصنيف في الصفحة الرئيسية -->
+            <div class="home-category-pills" id="homeCategoryPills"></div>
+
+            <!-- حاوية الكتب -->
             <div class="books-grid-container" id="dynamicBooksContainer">
-                <div style="color:var(--text-muted); padding: 0 20px; grid-column: span 3; text-align: center;">انتظر يامحب محمد وآل محمد...</div>
+                <div class="library-load-status"><i class="fas fa-bolt"></i><span>انتظر يا محب محمد وآل محمد... جاري تجهيز الخزانة</span></div>
             </div>
         </section>
-        <div style="height: 100px;"></div>
+        <div style="height: 110px;"></div>
     </main>
 
-    <!-- 2. قائمة الكتب والتصنيفات -->
+    <!-- =========================================================================
+         2. قائمة الكتب والتصنيفات الموضوعية (Catalog View)
+         ========================================================================= -->
     <main id="catalogView" class="stage-view">
         <header class="royal-header">
             <div>
-                <div class="tag-gold">✦ الفهرس الموضوعي</div>
+                <div class="tag-gold">✦ الفهرس الموضوعي المبوب</div>
                 <h1 class="main-title">قائمة الكتب والتصنيفات</h1>
             </div>
-            <button class="tactile-btn icon-btn" onclick="openSearch()">
-                <i class="fas fa-search text-gold"></i>
-            </button>
+            <div class="header-actions-v2">
+                <button class="tactile-btn icon-btn" onclick="expandOrCollapseAllCategories()" title="فتح / طي جميع الأقسام">
+                    <i class="fas fa-arrows-up-down text-gold"></i>
+                </button>
+                <button class="tactile-btn icon-btn" onclick="openSearch()" title="بحث شامل">
+                    <i class="fas fa-magnifying-glass text-gold"></i>
+                </button>
+            </div>
         </header>
 
         <section style="padding: 0 20px;">
-            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">انقر على اسم القسم لعرض أو إخفاء المتون المندرجة تحته:</p>
+            <div class="search-bar-wrap glass-box" style="margin-bottom: 12px;">
+                <i class="fas fa-filter search-bar-icon"></i>
+                <input type="text" id="catalogFilterInput" placeholder="ابحث عن كتاب أو قسم داخل الفهرس الموضوعي..." class="search-input" oninput="filterCatalogAccordion(this.value)">
+            </div>
+            <p style="font-size: 11.5px; color: var(--text-muted); margin-bottom: 12px;">انقر على اسم القسم لعرض المتون المندرجة تحته، أو ابحث مباشرة في جميع كتب القسم:</p>
             <div id="catalogAccordionContainer" style="display: flex; flex-direction: column; gap: 10px;"></div>
         </section>
-        <div style="height: 100px;"></div>
+        <div style="height: 110px;"></div>
     </main>
 
-    <!-- 3. مستودع الوسوم -->
+    <!-- =========================================================================
+         3. مستودع الوسوم والشواهد المصنفة (Tags View)
+         ========================================================================= -->
     <main id="tagsView" class="stage-view">
         <header class="royal-header">
             <div>
-                <div class="tag-gold">✦ الحافظة التخصصية</div>
-                <h1 class="main-title">مستودع الوسوم</h1>
+                <div class="tag-gold">✦ الحافظة التخصصية للباحث</div>
+                <h1 class="main-title">مستودع الوسوم الموضوعية</h1>
             </div>
-            <button class="tactile-btn icon-btn" onclick="openSearch()">
-                <i class="fas fa-search text-gold"></i>
-            </button>
+            <div class="header-actions-v2">
+                <button class="tactile-btn icon-btn" onclick="exportTaggedSnippetsAsReport()" title="تصدير الشواهد الموسومة">
+                    <i class="fas fa-file-export text-gold"></i>
+                </button>
+                <button class="tactile-btn icon-btn" onclick="openSearch()">
+                    <i class="fas fa-magnifying-glass text-gold"></i>
+                </button>
+            </div>
         </header>
 
         <section style="padding: 0 20px;">
@@ -149,46 +242,84 @@
             </div>
             <div id="taggedItemsListContainer" class="tagged-items-grid"></div>
         </section>
-        <div style="height: 100px;"></div>
+        <div style="height: 110px;"></div>
     </main>
 
-    <!-- 4. شاشة القارئ -->
+    <!-- =========================================================================
+         4. شاشة القارئ والتحقيق (Reader View)
+         ========================================================================= -->
     <main id="readerView" class="stage-view">
-        <header class="reader-top-bar">
-            <button class="tactile-btn icon-btn-flat" onclick="closeReader()">
+        <header class="reader-top-bar" id="readerTopBar">
+            <button class="tactile-btn icon-btn-flat" onclick="closeReader()" title="عودة">
                 <i class="fas fa-arrow-right"></i>
             </button>
-            <div class="reader-title-container">
+            <div class="reader-title-container" onclick="openTocModal()" style="cursor: pointer;" title="انقر لفتح الفهرس">
                 <h1 id="readerTitle" class="reader-header-title">جاري التحميل...</h1>
+                <div id="readerCurrentChapterSubtitle" class="reader-chapter-subtitle"></div>
                 <div class="reader-progress-line"><span id="readerProgressFill"></span></div>
             </div>
             <div class="reader-top-actions">
+                <button id="pinCompareBtn" class="tactile-btn icon-btn-flat" onclick="togglePinCurrentPageForComparison()" title="تثبيت الصفحة للمقارنة المرجعية"><i class="fas fa-columns"></i></button>
+                <button id="academicCiteBtn" class="tactile-btn icon-btn-flat" onclick="openCitationModal()" title="التوثيق الأكاديمي والاقتباس"><i class="fas fa-graduation-cap text-gold"></i></button>
                 <button id="downloadPdfBtn" class="tactile-btn icon-btn-flat pdf-download-btn" onclick="downloadBookAsPDF()" title="تنزيل الكتاب PDF" aria-label="تنزيل الكتاب PDF"><i class="fas fa-file-pdf"></i></button>
                 <button id="bookmarkBtn" class="tactile-btn icon-btn-flat" onclick="toggleBookmark()" title="حفظ إشارة مرجعية"><i class="far fa-bookmark"></i></button>
-                <button class="tactile-btn icon-btn-flat" onclick="copyCurrentCitation()" title="نسخ النص مع المصدر"><i class="fas fa-quote-right"></i></button>
-                <button class="tactile-btn icon-btn-flat" onclick="shareCurrentPage()" title="مشاركة الموضع"><i class="fas fa-share-nodes"></i></button>
-                <button class="tactile-btn icon-btn-flat" onclick="openInBookSearch()" title="بحث داخل الكتاب"><i class="fas fa-magnifying-glass text-gold"></i></button>
+                <button class="tactile-btn icon-btn-flat" onclick="openInBookSearch()" title="بحث داخل هذا الكتاب"><i class="fas fa-magnifying-glass text-gold"></i></button>
                 <button class="tactile-btn icon-btn-flat" id="openTocBtn" onclick="openTocModal()" title="الفهرس والإشارات"><i class="fas fa-list-ul"></i></button>
-                <button class="tactile-btn icon-btn-flat" onclick="openSettings()" title="المظهر والخط"><i class="fas fa-palette"></i></button>
+                <button class="tactile-btn icon-btn-flat" onclick="openSettings()" title="إعدادات القراءة والخط"><i class="fas fa-sliders"></i></button>
             </div>
         </header>
 
+        <!-- زر الخروج من وضع التركيز الغامر (Zen Mode) -->
+        <button id="zenExitFloatingBtn" class="zen-exit-btn tactile-btn" onclick="toggleZenMode()" style="display: none;" title="إظهار أشرطة القارئ">
+            <i class="fas fa-compress"></i> إنهاء وضع التركيز
+        </button>
+
+        <!-- درج المقارنة المرجعية (يظهر عند تثبيت صفحة للمقارنة) -->
+        <aside id="comparisonDrawer" class="comparison-drawer glass-box" style="display: none;">
+            <div class="comparison-drawer-head">
+                <div>
+                    <span class="tag-gold"><i class="fas fa-columns"></i> لوحة المقارنة المرجعية المثبتة</span>
+                    <h4 id="pinnedComparisonTitle">لا توجد صفحة مثبتة</h4>
+                </div>
+                <div style="display: flex; gap: 6px;">
+                    <button class="tactile-btn mini-action-btn" onclick="updatePinWithCurrentPage()" title="استبدال بالصفحة الحالية">
+                        <i class="fas fa-arrows-rotate"></i>
+                    </button>
+                    <button class="tactile-btn mini-action-btn" onclick="jumpToPinnedPage()" title="الانتقال لموضع الصفحة المثبتة">
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </button>
+                    <button class="tactile-btn mini-action-btn" onclick="closeComparisonDrawer()" title="إغلاق لوحة المقارنة">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="pinnedComparisonBody" class="comparison-drawer-body"></div>
+        </aside>
+
+        <!-- مساحة ورقة القراءة -->
         <section class="reader-paper-section" id="readerTapArea" onclick="handleScreenTap(event)">
-            <div class="reader-paper-box">
-                <div id="pageContent" style="font-size: 15px; font-family: 'Amiri', serif; text-align: justify; line-height: 1.8;"></div>
+            <div class="reader-paper-box" id="readerPaperBox">
+                <div id="pageContent" style="font-size: 18px; font-family: 'Amiri', serif; text-align: justify; line-height: 2.1;"></div>
             </div>
         </section>
 
-        <footer class="reader-bottom-bar">
+        <!-- الشريط السفلي للقارئ -->
+        <footer class="reader-bottom-bar" id="readerBottomBar">
             <div class="reader-controls-row">
                 <div class="nav-btn-group">
                     <button class="bottom-text-nav-btn tactile-btn" onclick="nextPage()">
-                        الصفحة التالية <i class="fas fa-chevron-left" style="font-size: 9px;"></i>
+                        التالية <i class="fas fa-chevron-left" style="font-size: 9px;"></i>
                     </button>
                     <div class="nav-btn-divider"></div>
                     <button class="bottom-text-nav-btn tactile-btn" onclick="prevPage()">
-                        <i class="fas fa-chevron-right" style="font-size: 9px;"></i> الصفحة السابقة
+                        <i class="fas fa-chevron-right" style="font-size: 9px;"></i> السابقة
                     </button>
+                </div>
+
+                <div class="reader-quick-tools">
+                    <button class="tactile-btn mini-action-btn" onclick="copyCurrentCitation()" title="نسخ الصفحة مع المصدر"><i class="fas fa-copy"></i></button>
+                    <button class="tactile-btn mini-action-btn" onclick="shareCurrentPage()" title="مشاركة رابط الصفحة"><i class="fas fa-share-nodes"></i></button>
+                    <button class="tactile-btn mini-action-btn" onclick="toggleZenMode()" title="وضع التركيز (ملء الشاشة)"><i class="fas fa-expand"></i></button>
                 </div>
 
                 <div class="direct-jump-wrap">
@@ -205,34 +336,210 @@
         </footer>
     </main>
 
-    <!-- شريط تظليل واقتباس النصوص -->
+    <!-- =========================================================================
+         5. شاشة البحث الشامل والمتقدم للباحثين (Advanced Research Search View)
+         ========================================================================= -->
+    <main id="searchView" class="stage-view">
+        <header class="royal-header">
+            <button class="tactile-btn icon-btn" onclick="closeSearch()">
+                <i class="fas fa-arrow-right text-gold"></i>
+            </button>
+            <div style="flex: 1; margin-right: 12px;">
+                <div class="tag-gold">✦ المحرك البحثي الفائق</div>
+                <h1 class="main-title" style="font-size: 18px;">البحث الشامل واستكشاف الأبواب</h1>
+            </div>
+            <button class="tactile-btn icon-btn" onclick="openCustomBooksScopeModal()" title="تحديد مجموعة كتب مخصصة للبحث">
+                <i class="fas fa-list-check text-gold"></i>
+            </button>
+        </header>
+
+        <section style="padding: 0 20px;">
+            <!-- شريط إدخال عبارة البحث الرئيسية -->
+            <div class="search-bar-wrap glass-box" style="margin-bottom: 8px;">
+                <i class="fas fa-magnifying-glass search-bar-icon"></i>
+                <input type="text" id="searchInput" placeholder="اكتب كلمة، جملة، أو عدة كلمات للبحث..." class="search-input" oninput="handleSearchInput(this.value)" onkeydown="if(event.key==='Enter') executeGlobalSearch()">
+                <button id="searchClearBtn" class="search-clear-btn" onclick="clearSearch()" style="display: none;" title="مسح">
+                    <i class="fas fa-times-circle"></i>
+                </button>
+            </div>
+
+            <!-- شريط فلترة الباب الموضوعي (للبحث عن نص داخل باب معين أو عدة أبواب بنفس الموضوع) -->
+            <div class="chapter-scope-bar glass-box">
+                <i class="fas fa-sitemap text-gold" style="font-size: 12px;"></i>
+                <input type="text" id="chapterTopicFilterInput" class="chapter-scope-input" placeholder="شرط الباب الموضوعي (اختياري): مثلاً اكتب «التوحيد» أو «الصلاة» لحصر البحث داخل أبواب هذا الموضوع..." oninput="handleSearchInput(document.getElementById('searchInput').value)">
+                <button id="clearChapterScopeBtn" class="search-clear-btn" onclick="clearChapterTopicFilter()" style="display: none;" title="إلغاء شرط الباب">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- اللوحة الذكية للاقتراحات وعمليات البحث الأخيرة -->
+            <div id="searchSmartPanel" class="search-smart-panel" style="display:none;"></div>
+
+            <!-- 1. تحديد هدف البحث (عناوين وأبواب | نصوص وصفحات | مستكشف الأبواب المتناظرة) -->
+            <div class="search-mode-selector search-target-grid" style="margin-bottom: 6px;">
+                <button id="searchTargetTocBtn" class="search-mode-btn active tactile-btn" onclick="setSearchTargetMode('toc')">
+                    <i class="fas fa-list-ul"></i> الكتب والأبواب
+                </button>
+                <button id="searchTargetTextBtn" class="search-mode-btn tactile-btn" onclick="setSearchTargetMode('fulltext')">
+                    <i class="fas fa-file-lines"></i> نصوص الصفحات
+                </button>
+                <button id="searchTargetTopicsBtn" class="search-mode-btn tactile-btn" onclick="setSearchTargetMode('topics')">
+                    <i class="fas fa-diagram-project"></i> تناظر الأبواب
+                </button>
+            </div>
+
+            <!-- 2. خيارات خوارزمية المطابقة اللغوية -->
+            <div class="search-mode-selector search-match-grid" style="margin-bottom: 8px;">
+                <button id="searchMatchTypeExact" class="search-mode-btn active tactile-btn" onclick="setSearchMatchType('exact')" title="البحث عن الجملة كما هي بالضبط">
+                    <i class="fas fa-quote-right"></i> تطابق تام
+                </button>
+                <button id="searchMatchTypeAll" class="search-mode-btn tactile-btn" onclick="setSearchMatchType('all')" title="وجود جميع الكلمات المكتوبة في نفس الصفحة أو الباب بأي ترتيب">
+                    <i class="fas fa-layer-group"></i> كل الكلمات
+                </button>
+                <button id="searchMatchTypeAny" class="search-mode-btn tactile-btn" onclick="setSearchMatchType('any')" title="وجود أي كلمة من الكلمات المكتوبة">
+                    <i class="fas fa-filter"></i> أي كلمة
+                </button>
+                <button id="searchMatchTypeSmart" class="search-mode-btn tactile-btn" onclick="setSearchMatchType('smart')" title="بحث عربي مرن يتجاوز اللواصق (الـ، والـ، بالـ، للـ) والضمائر">
+                    <i class="fas fa-wand-magic-sparkles"></i> جذور مرنة
+                </button>
+            </div>
+
+            <!-- 3. شريط نطاق البحث (كل المكتبة / مجموعة كتب مخصصة / أقسام / كتب) -->
+            <div class="search-scope-header">
+                <span class="scope-label"><i class="fas fa-bullseye text-gold"></i> نطاق البحث:</span>
+                <button class="custom-scope-trigger tactile-btn" onclick="openCustomBooksScopeModal()">
+                    <i class="fas fa-check-double"></i> تحديد مجموعة كتب (<b id="customScopeCountBadge">الكل</b>)
+                </button>
+            </div>
+            <div class="search-filters-scroll" id="searchFilterPills"></div>
+
+            <!-- 4. شريط التحليل الإحصائي وتوزيع النتائج على الكتب -->
+            <div id="searchStatusInfo" class="search-status-bar" style="display: none;">
+                <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                    <span id="searchResultCount" class="results-badge">0 نتائج</span>
+                    <span id="searchFilterName" class="filter-badge">في كل المكتبة</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <button class="tactile-btn mini-action-btn" onclick="toggleSearchResultsGrouping()" id="groupResultsToggleBtn" title="تجميع النتائج حسب الكتاب">
+                        <i class="fas fa-object-group"></i>
+                    </button>
+                    <button class="tactile-btn mini-action-btn" onclick="exportCurrentSearchResults()" title="تصدير نتائج البحث كملف">
+                        <i class="fas fa-download"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- شريط توزيع النتائج حسب الكتب (يظهر بعد البحث لفلترة كتاب بعينه بضغطة زر) -->
+            <div id="searchBookDistributionBar" class="search-distribution-bar" style="display: none;"></div>
+
+            <!-- حاوية نتائج البحث -->
+            <div id="searchResultsContainer" class="search-results-grid"></div>
+        </section>
+        <div style="height: 110px;"></div>
+    </main>
+
+    <!-- =========================================================================
+         النوافذ المنبثقة والأدوات التخصصية (Modals & Toolbars)
+         ========================================================================= -->
+
+    <!-- شريط تظليل واقتباس النصوص العائم -->
     <div id="selectionToolbar" class="selection-toolbar">
-        <span style="font-size: 11px; color: #D4AF37; margin-left: 2px;">تلوين:</span>
+        <span style="font-size: 10px; color: var(--gold-main); font-weight: 800;">تظليل:</span>
         <div class="color-dot" style="background: #ffeb3b;" onclick="applyHighlight('hl-yellow')" title="أصفر"></div>
         <div class="color-dot" style="background: #4caf50;" onclick="applyHighlight('hl-green')" title="أخضر"></div>
         <div class="color-dot" style="background: #e91e63;" onclick="applyHighlight('hl-pink')" title="وردي"></div>
         <button class="toolbar-action-btn" onclick="removeHighlight()" title="مسح التلوين"><i class="fas fa-eraser" style="color: #ff5252;"></i></button>
-        <div style="width: 1px; height: 16px; background: rgba(212,175,55,0.4); margin: 0 4px;"></div>
+        <div class="toolbar-divider"></div>
         <button class="toolbar-action-btn" onclick="openAddTagModal()" title="إضافة وسم دلالي"><i class="fas fa-tag text-gold"></i> وسم</button>
-        <div style="width: 1px; height: 16px; background: rgba(212,175,55,0.4); margin: 0 4px;"></div>
-        <button class="toolbar-action-btn" onclick="saveSelectedQuote()" title="حفظ الاقتباس"><i class="fas fa-bookmark text-gold"></i> حفظ</button>
-        <button class="toolbar-action-btn" onclick="saveSelectedNote()" title="إضافة ملاحظة"><i class="fas fa-note-sticky"></i> ملاحظة</button>
-        <button class="toolbar-action-btn" onclick="shareSelectedQuote()" title="مشاركة واقتباس"><i class="fas fa-share-nodes"></i> اقتباس</button>
+        <button class="toolbar-action-btn" onclick="saveSelectedQuote()" title="حفظ في الشواهد والاقتباسات"><i class="fas fa-bookmark text-gold"></i> شاهد</button>
+        <button class="toolbar-action-btn" onclick="saveSelectedNote()" title="إضافة تعليق أو حاشية بحثية"><i class="fas fa-note-sticky"></i> تعليق</button>
+        <button class="toolbar-action-btn" onclick="openCitationModal(true)" title="توثيق أكاديمي للنص المحدد"><i class="fas fa-graduation-cap text-gold"></i> توثيق</button>
+        <button class="toolbar-action-btn" onclick="searchSelectedTextInLibrary()" title="بحث عن النص المحدد في كل المكتبة"><i class="fas fa-magnifying-glass"></i> بحث</button>
+        <button class="toolbar-action-btn" onclick="shareSelectedQuote()" title="مشاركة واقتباس"><i class="fas fa-share-nodes"></i></button>
+    </div>
+
+    <!-- نافذة تحديد مجموعة كتب مخصصة للبحث (Multi-Book & Category Scope Modal) -->
+    <div id="customBookScopeModal" class="glass-modal">
+        <div class="modal-content glass-box v2-library-modal" style="max-width: 620px;">
+            <div class="v2-modal-head">
+                <div>
+                    <span class="tag-gold">✦ تخصيص النطاق البحثي</span>
+                    <h3 class="text-gold">اختر مجموعة الكتب أو الأقسام للبحث فيها</h3>
+                </div>
+                <button class="tactile-btn icon-btn-flat" onclick="closeCustomBooksScopeModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="search-bar-wrap glass-box" style="margin-bottom: 8px; height: 40px;">
+                <i class="fas fa-filter search-bar-icon"></i>
+                <input type="text" id="scopeModalFilterInput" placeholder="ابحث عن اسم كتاب لتحديده..." class="search-input" oninput="renderCustomScopeBooksList(this.value)">
+            </div>
+            <div class="scope-quick-actions">
+                <button class="tactile-btn v2-secondary-btn" onclick="selectAllScopeBooks()"><i class="fas fa-check-double"></i> تحديد الكل</button>
+                <button class="tactile-btn v2-secondary-btn" onclick="clearAllScopeBooks()"><i class="fas fa-eraser"></i> إلغاء التحديد</button>
+                <button class="tactile-btn v2-secondary-btn" onclick="selectCategoryScopePreset('الكتب الأربعة')"><i class="fas fa-star"></i> الكتب الأربعة</button>
+                <button class="tactile-btn v2-secondary-btn" onclick="selectCategoryScopePreset('تفسير أهل البيت')"><i class="fas fa-book-quran"></i> كتب التفسير</button>
+                <button class="tactile-btn v2-secondary-btn" onclick="selectCategoryScopePreset('كتب الغيبة')"><i class="fas fa-sun"></i> كتب الغيبة</button>
+            </div>
+            <div id="customScopeBooksContainer" class="toc-scroll-list" style="max-height: 46vh; margin-top: 8px;"></div>
+            <div class="v2-library-footer" style="justify-content: space-between; align-items: center;">
+                <span id="selectedScopeSummaryText" style="font-size: 11px; color: var(--gold-bright);">محدد: كل المكتبة</span>
+                <button class="tactile-btn v2-primary-btn" onclick="applyCustomBooksScope()"><i class="fas fa-check"></i> اعتماد النطاق والبحث</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة المعاينة السريعة لنتيجة البحث (Quick Context Preview Modal) -->
+    <div id="quickPreviewModal" class="glass-modal">
+        <div class="modal-content glass-box v2-library-modal" style="max-width: 680px; max-height: 85vh;">
+            <div class="v2-modal-head">
+                <div style="min-width: 0; flex: 1;">
+                    <span class="tag-gold" id="previewModalMetaTag">✦ معاينة سريعة للسياق</span>
+                    <h3 class="text-gold" id="previewModalBookTitle" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">عنوان الكتاب</h3>
+                </div>
+                <button class="tactile-btn icon-btn-flat" onclick="closeQuickPreviewModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="previewModalContent" class="quick-preview-body"></div>
+            <div class="v2-library-footer" style="justify-content: space-between; flex-wrap: wrap;">
+                <div style="display: flex; gap: 6px;">
+                    <button class="tactile-btn v2-secondary-btn" onclick="previewModalAdjacentPage(-1)"><i class="fas fa-chevron-right"></i> الصفحة السابقة</button>
+                    <button class="tactile-btn v2-secondary-btn" onclick="previewModalAdjacentPage(1)">الصفحة التالية <i class="fas fa-chevron-left"></i></button>
+                </div>
+                <div style="display: flex; gap: 6px;">
+                    <button class="tactile-btn v2-secondary-btn" onclick="copyPreviewModalCitation()"><i class="fas fa-graduation-cap"></i> نسخ موثق</button>
+                    <button class="tactile-btn v2-secondary-btn" onclick="pinPreviewModalPage()"><i class="fas fa-columns"></i> تثبيت للمقارنة</button>
+                    <button class="tactile-btn v2-primary-btn" onclick="openPreviewModalInFullReader()"><i class="fas fa-book-open"></i> فتح في القارئ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة التوثيق الأكاديمي المتعدد (Academic Citation Generator Modal) -->
+    <div id="citationModal" class="glass-modal">
+        <div class="modal-content glass-box" style="max-width: 520px;">
+            <div class="v2-modal-head">
+                <div>
+                    <span class="tag-gold">✦ التوثيق العلمي والإحالات</span>
+                    <h3 class="text-gold">مولّد الاقتباس والتوثيق الأكاديمي</h3>
+                </div>
+                <button class="tactile-btn icon-btn-flat" onclick="closeCitationModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 10px;">اختر نمط التوثيق المناسب لبحثك أو رسالتك العلمية ثم انسخه بضغطة زر:</p>
+            <div id="citationStylesContainer" class="citation-styles-list"></div>
+        </div>
     </div>
 
     <!-- نافذة إضافة وتصنيف الوسوم -->
     <div id="addTagModal" class="glass-modal">
         <div class="modal-content glass-box" style="max-height: 85vh; display: flex; flex-direction: column; width: 92%;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 8px;">
-                <h3 class="text-gold" style="font-size: 15px;"><i class="fas fa-tag"></i> تصنيف النص بوسم</h3>
+                <h3 class="text-gold" style="font-size: 15px;"><i class="fas fa-tag"></i> تصنيف النص بوسم بحثي</h3>
                 <i class="fas fa-times text-muted tactile-btn" onclick="closeAddTagModal()" style="font-size: 18px; cursor: pointer;"></i>
             </div>
-            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">اختر وسماً لتصنيف الحديث به:</p>
+            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">اختر وسماً لتصنيف الشاهد أو الحديث به:</p>
             <div id="availableTagsList" class="available-tags-grid"></div>
             <div style="border-top: 1px dashed rgba(212,175,55,0.25); margin-top: 12px; padding-top: 10px;">
                 <p style="font-size: 11px; color: var(--gold-bright); margin-bottom: 6px;"><i class="fas fa-plus"></i> إنشاء وسم مخصص جديد:</p>
                 <div style="display: flex; gap: 6px; margin-bottom: 8px;">
-                    <input type="text" id="newTagNameInput" placeholder="اسم الوسم" class="direct-jump-input" style="flex:1; text-align:right; padding: 6px 10px; border-radius:8px; background: rgba(255,255,255,0.08); font-size:12px;">
+                    <input type="text" id="newTagNameInput" placeholder="اسم الوسم (مثال: بحث الإمامة)" class="direct-jump-input" style="flex:1; text-align:right; padding: 6px 10px; border-radius:8px; background: rgba(255,255,255,0.08); font-size:12px;">
                     <input type="color" id="newTagColorInput" value="#D4AF37" style="width: 38px; height: 32px; border: none; background: transparent; cursor: pointer; border-radius: 6px;">
                 </div>
                 <button class="tactile-btn glass-btn" style="width: 100%;" onclick="createNewCustomTag()">إضافة وتصنيف النص</button>
@@ -255,229 +562,204 @@
         </div>
     </div>
 
-    <!-- نافذة البحث داخل الكتاب -->
+    <!-- نافذة البحث الداخلي في الكتاب المفتوح -->
     <div id="inBookSearchModal" class="glass-modal">
-        <div class="modal-content glass-box" style="max-height: 80vh; display: flex; flex-direction: column; width: 92%;">
+        <div class="modal-content glass-box" style="max-height: 82vh; display: flex; flex-direction: column; width: 92%; max-width: 540px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 8px;">
-                <h3 class="text-gold" style="font-size: 15px;"><i class="fas fa-magnifying-glass"></i> بحث في هذا الكتاب</h3>
+                <h3 class="text-gold" style="font-size: 15px;"><i class="fas fa-magnifying-glass"></i> بحث داخل هذا الكتاب</h3>
                 <i class="fas fa-times text-muted tactile-btn" onclick="closeInBookSearch()" style="font-size: 18px; cursor: pointer;"></i>
             </div>
-            <div class="search-bar-wrap glass-box" style="margin-bottom: 10px;">
-                <input type="text" id="inBookSearchInput" placeholder="اكتب عبارة للبحث في صفحات الكتاب..." class="search-input" oninput="executeInBookSearch(this.value)">
+            <div class="search-bar-wrap glass-box" style="margin-bottom: 8px;">
+                <i class="fas fa-search search-bar-icon"></i>
+                <input type="text" id="inBookSearchInput" placeholder="اكتب عبارة للبحث في صفحات هذا الكتاب..." class="search-input" oninput="executeInBookSearch(this.value)">
             </div>
+            <div id="inBookSearchCountBar" style="font-size: 11px; color: var(--gold-bright); margin-bottom: 6px; display: none;"></div>
             <div id="inBookSearchResults" class="toc-scroll-list" style="flex: 1;"></div>
         </div>
     </div>
 
     <!-- نافذة اختيار المجلدات والأجزاء -->
     <div id="volumesModal" class="glass-modal">
-        <div class="modal-content glass-box" style="max-height: 80vh; display: flex; flex-direction: column;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 8px;">
+        <div class="modal-content glass-box" style="max-height: 82vh; display: flex; flex-direction: column; max-width: 500px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 8px;">
                 <h3 id="volumesModalTitle" class="text-gold" style="font-size: 16px;"><i class="fas fa-layer-group"></i> أجزاء الكتاب</h3>
                 <i class="fas fa-times text-muted tactile-btn" onclick="closeVolumesModal()" style="font-size: 18px; cursor: pointer;"></i>
+            </div>
+            <div style="margin-bottom: 8px; display: flex; gap: 6px;">
+                <button id="searchInSeriesBtn" class="tactile-btn v2-primary-btn" style="width: 100%; justify-content: center; display: flex; align-items: center; gap: 6px;">
+                    <i class="fas fa-magnifying-glass"></i> البحث الشامل في جميع أجزاء هذا الكتاب
+                </button>
             </div>
             <div id="volumesListContainer" class="toc-scroll-list"></div>
         </div>
     </div>
 
-    <!-- نافذة الفهرست والمفضلة -->
+    <!-- نافذة الفهرست والإشارات المرجعية للكتاب -->
     <div id="tocModal" class="glass-modal">
-        <div class="modal-content glass-box" style="max-height: 80vh; display: flex; flex-direction: column;">
+        <div class="modal-content glass-box" style="max-height: 82vh; display: flex; flex-direction: column; max-width: 520px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                <h3 class="text-gold" style="font-size: 16px;"><i class="fas fa-list-ul"></i> المحتويات والإشارات</h3>
+                <h3 class="text-gold" style="font-size: 16px;"><i class="fas fa-list-ul"></i> فهرس الأبواب والإشارات</h3>
                 <i class="fas fa-times text-muted tactile-btn" onclick="closeTocModal()" style="font-size: 18px; cursor: pointer;"></i>
             </div>
             <div class="modal-tabs">
-                <button id="tabTocBtn" class="modal-tab-btn active" onclick="switchModalTab('toc')"><i class="fas fa-bars"></i> الفهرس</button>
+                <button id="tabTocBtn" class="modal-tab-btn active" onclick="switchModalTab('toc')"><i class="fas fa-bars"></i> فهرس الأبواب</button>
                 <button id="tabBookmarksBtn" class="modal-tab-btn" onclick="switchModalTab('bookmarks')"><i class="fas fa-bookmark"></i> الإشارات المحفوظة</button>
+            </div>
+            <div id="tocFilterBoxWrap" class="search-bar-wrap glass-box" style="height: 38px; margin-bottom: 8px;">
+                <i class="fas fa-filter search-bar-icon" style="font-size: 12px;"></i>
+                <input type="text" id="tocQuickFilterInput" placeholder="تصفية سريعة لعناوين الأبواب..." class="search-input" style="font-size: 12px;" oninput="filterReaderTocList(this.value)">
             </div>
             <div id="tocListContainer" class="toc-scroll-list"></div>
             <div id="bookmarksListContainer" class="toc-scroll-list" style="display: none;"></div>
         </div>
     </div>
 
-    <!-- 5. شاشة البحث الشامل مع عناصر التحكم التفاعلية المباشرة -->
-    <main id="searchView" class="stage-view">
-        <header class="royal-header">
-            <button class="tactile-btn icon-btn" onclick="closeSearch()">
-                <i class="fas fa-arrow-right text-gold"></i>
-            </button>
-            <h1 class="main-title" style="flex:1; text-align:right; margin-right:12px;">البحث الشامل والمتقدم</h1>
-        </header>
-
-        <section style="padding: 0 20px;">
-            <!-- شريط البحث -->
-            <div class="search-bar-wrap glass-box" style="margin-bottom: 8px;">
-                <i class="fas fa-search search-bar-icon"></i>
-                <input type="text" id="searchInput" placeholder="اكتب عبارة البحث..." class="search-input" oninput="handleSearchInput(this.value)">
-                <button id="searchClearBtn" class="search-clear-btn" onclick="clearSearch()" style="display: none;">
-                    <i class="fas fa-times-circle"></i>
-                </button>
-            </div>
-            <div id="searchSmartPanel" class="search-smart-panel" style="display:none;"></div>
-
-            <!-- خيارات نوع البحث المتقدم -->
-            <div class="search-mode-selector" style="margin-bottom: 6px;">
-                <button id="searchMatchTypeExact" class="search-mode-btn active tactile-btn" onclick="setSearchMatchType('exact')">
-                    <i class="fas fa-quote-right"></i> تطابق تام
-                </button>
-                <button id="searchMatchTypeAll" class="search-mode-btn tactile-btn" onclick="setSearchMatchType('all')">
-                    <i class="fas fa-layer-group"></i> كل الكلمات
-                </button>
-                <button id="searchMatchTypeAny" class="search-mode-btn tactile-btn" onclick="setSearchMatchType('any')">
-                    <i class="fas fa-filter"></i> أي كلمة
-                </button>
-            </div>
-
-            <!-- صف أزرار تحديد هدف البحث (الأبواب vs النصوص) -->
-            <div class="search-mode-selector">
-                <button id="searchTargetTocBtn" class="search-mode-btn active tactile-btn" onclick="setSearchTargetMode('toc')">
-                    <i class="fas fa-list-ul"></i> العناوين والأبواب
-                </button>
-                <button id="searchTargetTextBtn" class="search-mode-btn tactile-btn" onclick="setSearchTargetMode('fulltext')">
-                    <i class="fas fa-file-lines"></i> نصوص وصفحات الكتب
-                </button>
-            </div>
-
-            <!-- صف أزرار تحديد نطاق البحث -->
-            <div class="search-filters-scroll" id="searchFilterPills"></div>
-
-            <!-- شريط حالة ونتائج البحث -->
-            <div id="searchStatusInfo" class="search-status-bar" style="display: none;">
-                <span id="searchResultCount" class="results-badge">0 نتائج</span>
-                <span id="searchFilterName" class="filter-badge">في كل المكتبة</span>
-            </div>
-
-            <!-- نتائج البحث -->
-            <div id="searchResultsContainer" class="search-results-grid"></div>
-        </section>
-        <div style="height: 100px;"></div>
-    </main>
-
-    <!-- مكتبة المستخدم V2 -->
+    <!-- مكتبة الباحث الشخصية وحقيبة التحقيق -->
     <div id="personalLibraryModal" class="glass-modal">
         <div class="modal-content glass-box v2-library-modal">
             <div class="v2-modal-head">
-                <div><span class="tag-gold">✦ مساحتك</span><h3 class="text-gold">مكتبتي</h3></div>
+                <div><span class="tag-gold">✦ الحقيبة البحثية والمكتبة الشخصية</span><h3 class="text-gold">مكتبتي وشواهدي</h3></div>
                 <button class="tactile-btn icon-btn-flat" onclick="closePersonalLibrary()"><i class="fas fa-times"></i></button>
             </div>
             <div class="v2-library-dashboard" id="personalLibraryDashboard"></div>
             <div class="v2-library-tabs v2-library-tabs-wide">
-                <button class="v2-library-tab active" onclick="switchPersonalLibraryTab('recent',this)"><i class="fas fa-clock"></i><span>قراءتي</span></button>
-                <button class="v2-library-tab" onclick="switchPersonalLibraryTab('favorites',this)"><i class="fas fa-star"></i><span>المفضلة</span></button>
-                <button class="v2-library-tab" onclick="switchPersonalLibraryTab('bookmarks',this)"><i class="fas fa-bookmark"></i><span>العلامات</span></button>
-                <button class="v2-library-tab" onclick="switchPersonalLibraryTab('quotes',this)"><i class="fas fa-quote-right"></i><span>الاقتباسات</span></button>
-                <button class="v2-library-tab" onclick="switchPersonalLibraryTab('notes',this)"><i class="fas fa-note-sticky"></i><span>الملاحظات</span></button>
-                <button class="v2-library-tab" onclick="switchPersonalLibraryTab('tags',this)"><i class="fas fa-tags"></i><span>الوسوم</span></button>
+                <button class="v2-library-tab active" data-tab="recent" onclick="switchPersonalLibraryTab('recent',this)"><i class="fas fa-clock"></i><span>قراءتي</span></button>
+                <button class="v2-library-tab" data-tab="favorites" onclick="switchPersonalLibraryTab('favorites',this)"><i class="fas fa-star"></i><span>المفضلة</span></button>
+                <button class="v2-library-tab" data-tab="bookmarks" onclick="switchPersonalLibraryTab('bookmarks',this)"><i class="fas fa-bookmark"></i><span>العلامات</span></button>
+                <button class="v2-library-tab" data-tab="quotes" onclick="switchPersonalLibraryTab('quotes',this)"><i class="fas fa-quote-right"></i><span>الشواهد</span></button>
+                <button class="v2-library-tab" data-tab="notes" onclick="switchPersonalLibraryTab('notes',this)"><i class="fas fa-note-sticky"></i><span>التعليقات</span></button>
+                <button class="v2-library-tab" data-tab="tags" onclick="switchPersonalLibraryTab('tags',this)"><i class="fas fa-tags"></i><span>الوسوم</span></button>
             </div>
             <div id="personalLibraryList" class="v2-library-list"></div>
-            <div class="v2-library-footer">
-                <button class="tactile-btn v2-secondary-btn" onclick="exportPersonalLibrary()"><i class="fas fa-download"></i> تصدير مكتبتي</button>
-                <button class="tactile-btn v2-secondary-btn" onclick="openLibraryCommandCenter()"><i class="fas fa-sliders"></i> مركز الأدوات</button>
+            <div class="v2-library-footer" style="flex-wrap: wrap;">
+                <button class="tactile-btn v2-secondary-btn" onclick="exportPersonalLibrary()"><i class="fas fa-download"></i> تصدير نسخة احتياطية (JSON)</button>
+                <button class="tactile-btn v2-secondary-btn" onclick="triggerImportPersonalLibrary()"><i class="fas fa-upload"></i> استيراد نسخة</button>
+                <input type="file" id="importLibraryFileInput" accept=".json" style="display: none;" onchange="handleImportPersonalLibraryFile(event)">
+                <button class="tactile-btn v2-secondary-btn" onclick="exportResearchReportText()"><i class="fas fa-file-lines"></i> تصدير الشواهد والتعليقات نصياً</button>
             </div>
         </div>
     </div>
 
-    <!-- مركز أدوات المكتبة المتقدم -->
+    <!-- مركز أدوات الباحث المتقدم (Command Center) -->
     <div id="libraryCommandCenterModal" class="glass-modal">
         <div class="modal-content glass-box v2-command-modal">
             <div class="v2-modal-head">
-                <div><span class="tag-gold">✦ أدوات متقدمة</span><h3 class="text-gold">مركز الأدوات</h3></div>
+                <div><span class="tag-gold">✦ غرفة عمليات الباحث</span><h3 class="text-gold">مركز الأدوات والتحقيق</h3></div>
                 <button class="tactile-btn icon-btn-flat" onclick="closeLibraryCommandCenter()"><i class="fas fa-times"></i></button>
             </div>
             <div class="v2-command-grid">
-                <button class="v2-command-card tactile-btn" onclick="switchPersonalLibraryTab('quotes');closeLibraryCommandCenter();openPersonalLibrary();"><i class="fas fa-quote-right"></i><b>مكتب الاقتباسات</b><span>النصوص المحفوظة مع مصادرها</span></button>
-                <button class="v2-command-card tactile-btn" onclick="switchPersonalLibraryTab('notes');closeLibraryCommandCenter();openPersonalLibrary();"><i class="fas fa-note-sticky"></i><b>ملاحظاتي</b><span>ملاحظاتك مرتبطة بالكتاب والصفحة</span></button>
-                <button class="v2-command-card tactile-btn" onclick="showToast('وضع الباحث جاهز داخل القارئ', 'fa-flask');closeLibraryCommandCenter();"><i class="fas fa-flask"></i><b>وضع الباحث</b><span>أدوات مركزة دون تغيير الواجهة</span></button>
-                <button class="v2-command-card tactile-btn" onclick="openSearch();closeLibraryCommandCenter();"><i class="fas fa-bolt"></i><b>البحث السريع</b><span>الانتقال مباشرة إلى محرك البحث</span></button>
+                <button class="v2-command-card tactile-btn" onclick="closeLibraryCommandCenter();openSearchWithMode('topics');"><i class="fas fa-diagram-project"></i><b>مستكشف تناظر الأبواب</b><span>مقارنة الأبواب المتشابهة موضوعياً عبر الكتب</span></button>
+                <button class="v2-command-card tactile-btn" onclick="closeLibraryCommandCenter();openCustomBooksScopeModal(true);"><i class="fas fa-list-check"></i><b>بحث في مجموعة كتب مخصصة</b><span>اختر كتباً محددة وابحث في متونها معاً</span></button>
+                <button class="v2-command-card tactile-btn" onclick="switchPersonalLibraryTab('quotes');closeLibraryCommandCenter();openPersonalLibrary('quotes');"><i class="fas fa-quote-right"></i><b>دفتر الشواهد والاقتباسات</b><span>النصوص المستخرجة مع توثيقها الكامل</span></button>
+                <button class="v2-command-card tactile-btn" onclick="switchPersonalLibraryTab('notes');closeLibraryCommandCenter();openPersonalLibrary('notes');"><i class="fas fa-note-sticky"></i><b>حواشي وتعليقات الباحث</b><span>ملاحظاتك التحقيقية المرتبطة بالصفحات</span></button>
+                <button class="v2-command-card tactile-btn" onclick="closeLibraryCommandCenter();openAppearanceSettings();"><i class="fas fa-palette"></i><b>استوديو الألوان والمظهر</b><span>تغيير ثيم الواجهة الداكنة والألوان بتناسق</span></button>
+                <button class="v2-command-card tactile-btn" onclick="closeLibraryCommandCenter();exportResearchReportText();"><i class="fas fa-file-export"></i><b>تصدير المسودة البحثية</b><span>استخراج ملف نصي بكافة شواهدك وتعليقاتك</span></button>
             </div>
-            <div class="v2-command-tip"><i class="fas fa-keyboard"></i><span>اختصارات: / للبحث · Esc للإغلاق · Ctrl+K لمركز الأدوات</span></div>
+            <div class="v2-command-tip"><i class="fas fa-keyboard"></i><span>اختصارات لوحة المفاتيح: <kbd>/</kbd> للبحث الشامل · <kbd>Ctrl+K</kbd> لمركز الأدوات · الأسهم لتقليب الصفحات · <kbd>Esc</kbd> لإغلاق النوافذ</span></div>
         </div>
     </div>
 
-    <!-- نافذة حفظ ملاحظة مرتبطة بالنص -->
+    <!-- نافذة حفظ ملاحظة أو تعليق بحثي مرتبط بالنص -->
     <div id="noteEditorModal" class="glass-modal">
         <div class="modal-content glass-box v2-note-modal">
             <div class="v2-modal-head">
-                <div><span class="tag-gold">✦ بحثك</span><h3 class="text-gold">ملاحظة على النص</h3></div>
+                <div><span class="tag-gold">✦ تقييد علمي</span><h3 class="text-gold">إضافة تعليق أو حاشية على النص</h3></div>
                 <button class="tactile-btn icon-btn-flat" onclick="closeNoteEditor()"><i class="fas fa-times"></i></button>
             </div>
             <div id="selectedTextPreview" class="v2-selection-preview"></div>
-            <textarea id="noteEditorInput" class="v2-note-input" placeholder="اكتب ملاحظتك..."></textarea>
+            <textarea id="noteEditorInput" class="v2-note-input" placeholder="اكتب تعليقك التحقيقي أو استنباطك حول هذا النص..."></textarea>
             <div class="v2-note-actions">
                 <button class="tactile-btn glass-btn" onclick="closeNoteEditor()">إلغاء</button>
-                <button class="tactile-btn v2-primary-btn" onclick="commitNote()">حفظ الملاحظة</button>
+                <button class="tactile-btn v2-primary-btn" onclick="commitNote()">حفظ التعليق</button>
             </div>
         </div>
     </div>
 
-    <!-- نافذة إعدادات المظهر والخط -->
+    <!-- نافذة إعدادات القراءة والخطوط داخل القارئ -->
     <div id="settingsModal" class="glass-modal">
-        <div class="modal-content glass-box">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 14px;">
-                <h3 class="text-gold" style="font-size: 16px;">المظهر وإعدادات القراءة</h3>
-                <i class="fas fa-times text-muted tactile-btn" onclick="closeSettings()" style="font-size: 18px;"></i>
+        <div class="modal-content glass-box" style="max-width: 460px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                <h3 class="text-gold" style="font-size: 16px;"><i class="fas fa-sliders"></i> إعدادات القراءة والورقة</h3>
+                <i class="fas fa-times text-muted tactile-btn" onclick="closeSettings()" style="font-size: 18px; cursor: pointer;"></i>
             </div>
             
             <div style="margin-bottom: 14px;">
-                <p class="text-white" style="margin-bottom: 6px; font-size: 13px;">نمط لون خلفية القراءة</p>
+                <p class="text-white" style="margin-bottom: 6px; font-size: 12.5px;">نمط إضاءة وخلفية ورقة القراءة</p>
                 <div style="display: flex; gap: 6px;">
-                    <button class="theme-pill-btn" style="background: #030705; color: #D4AF37;" onclick="setReadingTheme('theme-royal')">ملكي</button>
-                    <button class="theme-pill-btn" style="background: #F4ECD8; color: #2B2118;" onclick="setReadingTheme('theme-sepia')">ورقي</button>
-                    <button class="theme-pill-btn" style="background: #000000; color: #ffffff;" onclick="setReadingTheme('theme-dark')">داكن</button>
-                    <button class="theme-pill-btn" style="background: #FAF9F6; color: #111111;" onclick="setReadingTheme('theme-light')">فاتح</button>
+                    <button class="theme-pill-btn" style="background: #030705; color: #D4AF37;" onclick="setReadingTheme('theme-royal')">ملكي داكن</button>
+                    <button class="theme-pill-btn" style="background: #000000; color: #e0e0e0;" onclick="setReadingTheme('theme-dark')">ليلي حالك</button>
+                    <button class="theme-pill-btn" style="background: #F4ECD8; color: #2B2118;" onclick="setReadingTheme('theme-sepia')">ورق تراثي</button>
+                    <button class="theme-pill-btn" style="background: #FAF9F6; color: #111111;" onclick="setReadingTheme('theme-light')">نهاري نقي</button>
                 </div>
             </div>
 
             <div style="margin-bottom: 14px;">
-                <p class="text-white" style="margin-bottom: 6px; font-size: 13px;">حجم الخط (<span id="fontSizeDisplay">15</span>)</p>
-                <div style="display: flex; gap: 10px;">
+                <p class="text-white" style="margin-bottom: 6px; font-size: 12.5px;">حجم خط المتن (<span id="fontSizeDisplay">18</span>px)</p>
+                <div style="display: flex; gap: 8px;">
                     <button class="tactile-btn glass-btn flex-1" onclick="adjustFontSize(-2)">تصغير <i class="fas fa-minus"></i></button>
                     <button class="tactile-btn glass-btn flex-1" onclick="adjustFontSize(2)">تكبير <i class="fas fa-plus"></i></button>
                 </div>
             </div>
 
+            <div style="margin-bottom: 14px;">
+                <p class="text-white" style="margin-bottom: 6px; font-size: 12.5px;">تباعد الأسطر (<span id="lineHeightDisplay">2.1</span>)</p>
+                <div style="display: flex; gap: 8px;">
+                    <button class="tactile-btn glass-btn flex-1" onclick="adjustLineHeight(-0.15)">تضييق <i class="fas fa-compress-alt"></i></button>
+                    <button class="tactile-btn glass-btn flex-1" onclick="adjustLineHeight(0.15)">توسيع <i class="fas fa-expand-alt"></i></button>
+                </div>
+            </div>
+
             <div>
-                <p class="text-white" style="margin-bottom: 6px; font-size: 13px;">نوع الخط</p>
-                <div style="display: flex; gap: 10px;">
-                    <button class="tactile-btn glass-btn flex-1" onclick="changeFontFamily('Amiri')">أميري (تقليدي)</button>
-                    <button class="tactile-btn glass-btn flex-1" onclick="changeFontFamily('Cairo')">قاهرة (عصري)</button>
+                <p class="text-white" style="margin-bottom: 6px; font-size: 12.5px;">نوع الخط العربي</p>
+                <div style="display: flex; gap: 8px;">
+                    <button class="tactile-btn glass-btn flex-1" onclick="changeFontFamily('Amiri')">الأميري (مصحفي)</button>
+                    <button class="tactile-btn glass-btn flex-1" onclick="changeFontFamily('Naskh')">نسخ تراثي</button>
+                    <button class="tactile-btn glass-btn flex-1" onclick="changeFontFamily('Cairo')">القاهرة (حديث)</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- مركز تخصيص ألوان الواجهة — خارج القارئ والكتب -->
+    <!-- استوديو تخصيص ألوان الواجهة الداكنة — خارج القارئ -->
     <div id="appearanceModal" class="glass-modal">
-        <div class="modal-content glass-box appearance-external-modal">
+        <div class="modal-content glass-box appearance-external-modal" style="max-width: 500px;">
             <div class="v2-modal-head">
-                <div><span class="tag-gold">✦ تخصيص الموقع</span><h3 class="text-gold">ألوان الواجهة</h3></div>
+                <div><span class="tag-gold">✦ استوديو الهوية البصرية</span><h3 class="text-gold">تخصيص ألوان الواجهة</h3></div>
                 <button class="tactile-btn icon-btn-flat" onclick="closeAppearanceSettings()" aria-label="إغلاق"><i class="fas fa-times"></i></button>
             </div>
-            <p class="appearance-external-note">هذه الإعدادات تغيّر شكل المكتبة بالكامل، وليست إعدادات لون صفحات الكتب.</p>
+            <p class="appearance-external-note">اختر من الثيمات الداكنة المتناسقة أو خصص الألوان بحرية مع الضبط التلقائي للوضوح والتباين:</p>
             <div class="palette-presets" id="externalPalettePresets">
-                <button class="palette-preset" data-preset="emerald" onclick="applyPalettePreset('emerald');syncAppearanceControls()"><i></i><span>زمردي</span></button>
-                <button class="palette-preset" data-preset="royal" onclick="applyPalettePreset('royal');syncAppearanceControls()"><i></i><span>ملكي</span></button>
-                <button class="palette-preset" data-preset="navy" onclick="applyPalettePreset('navy');syncAppearanceControls()"><i></i><span>كحلي</span></button>
-                <button class="palette-preset" data-preset="burgundy" onclick="applyPalettePreset('burgundy');syncAppearanceControls()"><i></i><span>عنابي</span></button>
-                <button class="palette-preset" data-preset="paper" onclick="applyPalettePreset('paper');syncAppearanceControls()"><i></i><span>مخطوط</span></button>
-                <button class="palette-preset" data-preset="slate" onclick="applyPalettePreset('slate');syncAppearanceControls()"><i></i><span>ليلي</span></button>
+                <button class="palette-preset" data-preset="royal" onclick="applyPalettePreset('royal');syncAppearanceControls()"><i></i><span>ملكي ذهبي</span></button>
+                <button class="palette-preset" data-preset="emerald" onclick="applyPalettePreset('emerald');syncAppearanceControls()"><i></i><span>زمردي علوي</span></button>
+                <button class="palette-preset" data-preset="navy" onclick="applyPalettePreset('navy');syncAppearanceControls()"><i></i><span>كحلي أكاديمي</span></button>
+                <button class="palette-preset" data-preset="burgundy" onclick="applyPalettePreset('burgundy');syncAppearanceControls()"><i></i><span>عنابي تراثي</span></button>
+                <button class="palette-preset" data-preset="turquoise" onclick="applyPalettePreset('turquoise');syncAppearanceControls()"><i></i><span>فيروزي نجفي</span></button>
+                <button class="palette-preset" data-preset="amethyst" onclick="applyPalettePreset('amethyst');syncAppearanceControls()"><i></i><span>بنفسجي عرفاني</span></button>
+                <button class="palette-preset" data-preset="slate" onclick="applyPalettePreset('slate');syncAppearanceControls()"><i></i><span>ليلي فحمي</span></button>
+                <button class="palette-preset" data-preset="paper" onclick="applyPalettePreset('paper');syncAppearanceControls()"><i></i><span>مخطوط عتيق</span></button>
             </div>
             <div class="color-custom-grid">
-                <label class="color-control"><span>اللون الرئيسي</span><input id="uiAccentColor" type="color" value="#D4AF37" oninput="applyCustomAppearance()"></label>
-                <label class="color-control"><span>لون الخلفية</span><input id="uiBackgroundColor" type="color" value="#030705" oninput="applyCustomAppearance()"></label>
-                <label class="color-control"><span>لون النص</span><input id="uiTextColor" type="color" value="#F8F9FA" oninput="applyCustomAppearance()"></label>
+                <label class="color-control"><span>اللون الذهبي/المميز</span><input id="uiAccentColor" type="color" value="#D4AF37" oninput="applyCustomAppearance()"></label>
+                <label class="color-control"><span>لون الخلفية الداكنة</span><input id="uiBackgroundColor" type="color" value="#030705" oninput="applyCustomAppearance()"></label>
+                <label class="color-control"><span>لون النص والوضوح</span><input id="uiTextColor" type="color" value="#F8F9FA" oninput="applyCustomAppearance()"></label>
             </div>
-            <div class="appearance-contrast-line"><span id="appearanceContrastBadge" class="appearance-contrast-badge">متناسق</span><span>فحص تلقائي للتباين والقراءة</span></div>
-            <div class="appearance-range-row"><span>سطوع الواجهة</span><input id="uiBrightness" type="range" min="70" max="130" value="100" oninput="applyCustomAppearance()"><output id="uiBrightnessValue">100%</output></div>
+            <div class="appearance-contrast-line">
+                <span id="appearanceContrastBadge" class="appearance-contrast-badge">متناسق ومريح</span>
+                <span>معيار الوضوح الأكاديمي للقراءة الطويلة</span>
+            </div>
+            <div class="appearance-range-row">
+                <span>سطوع الواجهة</span>
+                <input id="uiBrightness" type="range" min="75" max="125" value="100" oninput="applyCustomAppearance()">
+                <output id="uiBrightnessValue">100%</output>
+            </div>
             <div class="appearance-actions">
-                <button class="tactile-btn glass-btn" onclick="resetCustomAppearance();syncAppearanceControls()"><i class="fas fa-rotate-left"></i> الافتراضي</button>
-                <button class="tactile-btn v2-primary-btn" onclick="autoBalanceAppearance()"><i class="fas fa-wand-magic-sparkles"></i> تنسيق تلقائي</button>
+                <button class="tactile-btn glass-btn" onclick="resetCustomAppearance();syncAppearanceControls()"><i class="fas fa-rotate-left"></i> الملكي الافتراضي</button>
+                <button class="tactile-btn v2-primary-btn" onclick="autoBalanceAppearance()"><i class="fas fa-wand-magic-sparkles"></i> موازنة التباين تلقائياً</button>
             </div>
         </div>
     </div>
 
-    <!-- شريط التنقل السفلي -->
+    <!-- شريط التنقل السفلي الزجاجي -->
     <nav class="glass-bottom-nav">
         <div class="nav-inner glass-box">
             <button id="navHomeBtn" class="nav-item active tactile-btn" onclick="switchTab('home')">
@@ -486,15 +768,15 @@
             </button>
             <button id="navCatalogBtn" class="nav-item tactile-btn" onclick="switchTab('catalog')">
                 <i class="fas fa-book-open"></i>
-                <span>قائمة الكتب</span>
+                <span>التصنيفات</span>
+            </button>
+            <button id="navSearchBtn" class="nav-item tactile-btn" onclick="switchTab('search')">
+                <i class="fas fa-magnifying-glass"></i>
+                <span>البحث العلمي</span>
             </button>
             <button id="navTagsBtn" class="nav-item tactile-btn" onclick="switchTab('tags')">
                 <i class="fas fa-tags"></i>
                 <span>الوسوم</span>
-            </button>
-            <button id="navSearchBtn" class="nav-item tactile-btn" onclick="switchTab('search')">
-                <i class="fas fa-search"></i>
-                <span>البحث</span>
             </button>
             <button id="navAppearanceBtn" class="nav-item tactile-btn" onclick="openAppearanceSettings()" title="ألوان الواجهة">
                 <i class="fas fa-palette"></i>
@@ -503,14 +785,15 @@
         </div>
     </nav>
 
-    <!-- مساعدك الرقمي: خويدم أنيس (علامة عائمة مصغرة) -->
+    <!-- المرشد التفاعلي العائم: خويدم أنيس -->
     <div class="floating-guide-container" id="floatingGuide">
         <div id="guideSpeechBubble" class="guide-speech-bubble">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                <span style="font-size: 9px; color: var(--gold-main); font-weight: bold;"><i class="fas fa-robot"></i> خويدم أنيس</span>
+                <span style="font-size: 9.5px; color: var(--gold-main); font-weight: bold;"><i class="fas fa-compass"></i> مرشد الباحث</span>
                 <i class="fas fa-times text-muted tactile-btn" onclick="hideGuideBubble()" style="font-size: 12px; cursor: pointer;"></i>
             </div>
-            <div id="guideStepCounter" class="guide-step-counter"></div><p id="guideSpeechText" class="guide-speech-text"></p>
+            <div id="guideStepCounter" class="guide-step-counter"></div>
+            <p id="guideSpeechText" class="guide-speech-text"></p>
         </div>
         <div class="guide-avatar tactile-btn" role="button" tabindex="0" aria-label="فتح المرشد وسحب المرشد">
             <i class="fas fa-chalkboard-user text-gold" style="font-size: 18px;"></i>
